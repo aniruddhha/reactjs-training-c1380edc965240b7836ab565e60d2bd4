@@ -1,0 +1,20 @@
+{
+  "name": "sample-app",
+  "version": "1.0.0",
+  "description": "this is a demo library",
+  "main": "index.js",
+  "scripts": {
+    "abc": "echo 'I am sample command'",
+    "start": "curl https://www.google.com"
+  },
+  "keywords": [
+    "node",
+    "project",
+    "frontend"
+  ],
+  "author": "@aniruddhha",
+  "license": "ISC",
+  "dependencies": {
+    "sm-pk": "^1.0.0"
+  }
+}
