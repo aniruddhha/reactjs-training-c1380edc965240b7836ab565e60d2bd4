@@ -1,16 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import { App } from './App';
 import reportWebVitals from './reportWebVitals';
-import { Mobile } from './Mobile'
-import Laptop from './Laptop'
-import { DataTable } from './DataTable'
+import { Basic } from './basic/basic'
+import Doctor from './basic/clsprop';
+import Progress from './state/progress-component';
+
+const basic = <Basic backgroundColor='red' border='1px solid red' sdjdkgj='10' />
+const doctor = <Doctor name='abc' id='134' />
+const progress = <Progress max='100' />
 
 ReactDOM.render(
-  <>
-    <Laptop />
-  </>,
+  progress,
   document.getElementById('root')
 );
 
