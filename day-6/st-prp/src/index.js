@@ -4,13 +4,16 @@ import reportWebVitals from './reportWebVitals';
 import { Basic } from './basic/basic'
 import Doctor from './basic/clsprop';
 import Progress from './state/progress-component';
+import PrgCls from './state/prog-cls-comp';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const basic = <Basic backgroundColor='red' border='1px solid red' sdjdkgj='10' />
 const doctor = <Doctor name='abc' id='134' />
-const progress = <Progress max='100' />
+const progress = <Progress max={100} incr={5} />
+const progressCls = <PrgCls />
 
 ReactDOM.render(
-  progress,
+  basic,
   document.getElementById('root')
 );
 
