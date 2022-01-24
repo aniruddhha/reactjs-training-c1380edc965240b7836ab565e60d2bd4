@@ -37,9 +37,11 @@ export function DataTable() {
     let [listOfItems, setNewListOfItems] = useState(items);
 
     const onDeleteInvoiceRow = function (rowIndex) {
-        listOfItems.splice(rowIndex, 1);
-
-        setNewListOfItems(listOfItems);
+        // logic for deleting targetted row
+        let updatedListOfItems = listOfItems.filter( (item, index) => { return index != rowIndex } )
+        // use State to update te table contents
+        setNewListOfItems(updatedListOfItems);
+        console.log(`Deleted row index: ${rowIndex}`)
     }
 
 
