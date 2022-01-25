@@ -3,10 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import { Car } from './car/car'
+import { Mobile } from './mobile/mobile'
 
 ReactDOM.render(
   <React.StrictMode>
-    <Car/>
+    <Mobile/>
   </React.StrictMode>,
   document.getElementById('root')
 );
