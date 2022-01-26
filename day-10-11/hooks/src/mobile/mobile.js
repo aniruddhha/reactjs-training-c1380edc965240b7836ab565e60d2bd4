@@ -19,8 +19,6 @@ export function Mobile() {
         setSt( pSt => !pSt )
         setDsp(pDsp => !pDsp)
     }
-
-
     
     return(
         <>

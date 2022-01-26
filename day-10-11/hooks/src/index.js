@@ -4,10 +4,11 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import { Car } from './car/car'
 import { Mobile } from './mobile/mobile'
+import { BikeIndex } from './bike/bike'
 
 ReactDOM.render(
   <React.StrictMode>
-    <Mobile/>
+    <BikeIndex/>
   </React.StrictMode>,
   document.getElementById('root')
 );
