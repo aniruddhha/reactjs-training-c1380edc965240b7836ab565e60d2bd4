@@ -20,7 +20,7 @@ export function NonOptimized() {
             </div>
             <div>
                 <div className='row'>
-                    <MemoisedList characters={characters} addPosterToCart={addPosterToCart}/>
+                    <CharacterList characters={characters} addPosterToCart={addPosterToCart}/>
                 </div>
             </div>
         </div>
