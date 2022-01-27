@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState, useMemo } from 'react'
 import { useCharacter } from '../custom-hook/use-character-non-optimized'
 
 export function NonOptimized() {
@@ -11,23 +11,28 @@ export function NonOptimized() {
     const { characters } = useCharacter('https://hp-api.herokuapp.com/api/characters')
     
     const onClk = () => setCnt( c => c + 1  )
-    const addPosterToCart = () => setCart( cr => cr + 1 )
-   
+    const addPosterToCart = useCallback(() => setCart( cr => cr + 1 ), [characters])
+
+    const findContains = useMemo( () => characters.map( ch => ch['name'].includes('a'))[0], [characters])
+
     return(
         <div className='container'>
             <div className='row'>
                 <input type='button' value='Rerender' onClick={onClk}/>
             </div>
+            <div className='row'>
+             Total Sell Price {findContains}
+            </div>
             <div>
                 <div className='row'>
-                    <CharacterList characters={characters} addPosterToCart={addPosterToCart}/>
+                    <MemoiaedList characters={characters} addPosterToCart={addPosterToCart}/>
                 </div>
             </div>
         </div>
     )
 }
 
-function CharacterList({ characters , addPosterToCart}) {
+const MemoiaedList = React.memo(function CharacterList({ characters , addPosterToCart}) {
     useEffect( () => {
         console.count('From Huge List')
     })
@@ -36,7 +41,7 @@ function CharacterList({ characters , addPosterToCart}) {
             <Character key={inx} {...chr} addPosterToCart={addPosterToCart}/>
         ) 
     )
-}
+})
 
 function Character({ name, image, dob, addPosterToCart }) {
     useEffect( () => {
