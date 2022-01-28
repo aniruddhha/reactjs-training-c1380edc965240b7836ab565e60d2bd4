@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 export function Login() {
 
     const nav = useNavigate()
-    const onLogin = () => nav('/home/123')
+    const onLogin = () => nav('/home/123', { state : { hi : 'helllo' } })
 
     return(
         <>
