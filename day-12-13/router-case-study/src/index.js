@@ -13,19 +13,21 @@ import { LeftMenu } from './left-menu/left-menu';
 import { Overview } from './left-menu/overview';
 import { Dashboard } from './left-menu/dashboard';
 
+const dt = { sts : 'success'  } // fetch call result
+
 const router = (
   <BrowserRouter>
     <Routes>
       <Route path='/' element={<LeftMenu/>}>
         <Route path='home' element={<Overview/>} />
-        <Route path='dashboard' element={<Dashboard/>} />
+        <Route path='dashboard' element={ dt.sts === 'success' ?  <Dashboard/> : <> <h1> UnAuthorized </h1> </>} />
       </Route>
     </Routes>
   </BrowserRouter>
 )
 
 ReactDOM.render(
-  router,
+  dt.sts === 'success' ? router : <><h1> UnAuthorized </h1></> ,
   document.getElementById('root')
 );
 
