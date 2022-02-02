@@ -1,19 +1,21 @@
 import PropTypes from 'prop-types';
-import { useState } from 'react'
+import { useState } from 'react';
 
-export function InvoiceRow({ sr = 0, item = 'abc', price = 0, quantity = 0, onDelete }) {
+export function InvoiceRow({ sr = 0, item = 'test item', price = 10, quantity = 1, onDelete }) {
     return (
         <tr>
             <th scope="row">{sr}</th>
             <td>{item}</td>
             <td>{price}</td>
             <td>{quantity}</td>
-            <td> {price * quantity}</td>
+            <td> {price * quantity} </td>
             <td><a href="#" onClick={() => onDelete(sr - 1)}>❌</a></td>
         </tr>
     )
 }
-InvoiceRow.propType = {
+
+// define the propTypes
+InvoiceRow.InvoiceRow = {
     item: PropTypes.string,
     price: PropTypes.number,
     quantity: PropTypes.number,
@@ -22,27 +24,38 @@ InvoiceRow.propType = {
 
 export function DataTable() {
 
-    const onDeleteInvoice = (sr) => console.log(`Invoice Deleted ${sr}`)
+    // initial data of the table
+    let items = [
+        { item: 'Samsung', price: 23400, quantity: 10 },
+        { item: 'RedMI', price: 15000, quantity: 15 },
+        { item: 'Nokia', price: 18000, quantity: 23 },
+        { item: 'Sony', price: 25000, quantity: 14 },
+        { item: 'Apple', price: 75000, quantity: 8 }
+    ];
 
-    const items = [
-        { item: 'abc', price: 456, quantity: 12 },
-        { item: 'pqr', price: 142, quantity: 450 },
-        { item: 'xyz', price: 712, quantity: 1450 },
-        { item: 'lmn', price: 78, quantity: 3000 },
-    ]
+    // setting the data as a state
+    let [listOfItems, setNewListOfItems] = useState(items);
 
-    const rows = items.map(
-        (itm, index) => (
+    const onDeleteInvoiceRow = function (rowIndex) {
+        // logic for deleting targetted row
+        let updatedListOfItems = listOfItems.filter( (item, index) => { return index != rowIndex } )
+        // use State to update te table contents
+        setNewListOfItems(updatedListOfItems);
+        console.log(`Deleted row index: ${rowIndex}`)
+    }
+
+
+    let rows = listOfItems.map(
+        (item, index) =>
             <InvoiceRow
                 key={index}
                 sr={index + 1}
-                item={itm.item}
-                price={itm.price}
-                quantity={itm.quantity}
-                onDelete={onDeleteInvoice}
+                item={item.item}
+                price={item.price}
+                quantity={item.quantity}
+                onDelete={onDeleteInvoiceRow}
             />
-        )
-    )
+    );
 
     return (
         <table className="table container">
