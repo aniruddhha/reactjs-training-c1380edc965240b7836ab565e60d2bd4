@@ -9,7 +9,7 @@ const initialState = {
 const reducer = (state, action) => {
   switch (action.type) {
     case 'abc': {
-      return { data : ++state.data }
+      return { ...state, data : ++state.data }
     }
     case 'pqr': {
       return { data : --state.data }
